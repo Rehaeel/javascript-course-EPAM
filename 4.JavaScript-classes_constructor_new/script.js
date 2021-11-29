@@ -10,9 +10,7 @@ class Vector {
     }
 
     equals(secondArr) {
-        if (this.arr.length === secondArr.arr.length) {
-            return true;
-        } else return false;
+        return this.arr.length === secondArr.arr.length ? true : false;
     }
 
     add(secondArr) {

@@ -5,7 +5,6 @@
 class MyPromise extends Promise {
     constructor(resolve) {
         super(resolve, null);
-        this.syncThen = this.syncThen.bind(this);
     }
     async syncThen(func) {
         return await func();

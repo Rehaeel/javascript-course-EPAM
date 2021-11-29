@@ -1,13 +1,17 @@
 "use strict";
 
-function myNew(constructor, ...args) {
-    return (constructor.prototype = new constructor(...args));
+function myNew(constructorFunc, ...args) {
+    const tempItem = {};
+    Object.setPrototypeOf(tempItem, constructorFunc.prototype);
+    constructorFunc.apply(tempItem, args);
+    return tempItem;
 }
 
 function Person(name, age) {
     this.name = name;
     this.age = age;
 }
+
 Person.prototype.introduce = function () {
     return "My name is " + this.name + " and I am " + this.age;
 };

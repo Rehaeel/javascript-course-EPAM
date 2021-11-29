@@ -25,14 +25,14 @@ const sum = (...args) => {
     if (inputArgs.length === 1) {
         let total = inputArgs[0];
         function accountant(y) {
-            y ? (total += y) : console.log(total);
+            y ? (total += y) : total;
             return (z) => accountant(z);
         }
 
-        return (x) => (x ? accountant(x) : console.log(total));
-    } else console.log(inputArgs.reduce((acc, el) => acc + el, 0));
+        return (x) => (x ? accountant(x) : total);
+    } else return inputArgs.reduce((acc, el) => acc + el, 0);
 };
 
-sum(2, 3);
-sum(2)(3)();
-sum(1)(2)(3)(4)();
+console.log(sum(2, 3));
+console.log(sum(2)(3)());
+console.log(sum(1)(2)(3)(4)());

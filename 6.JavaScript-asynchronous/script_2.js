@@ -9,7 +9,7 @@ class ReversePromise extends Promise {
         this.beenActivated = false;
     }
 
-    accumulator() {
+    accumulate() {
         // setting timer to accumulate all entries
         setTimeout(() => {
             this.callList.reverse().map((el) => el());
@@ -22,7 +22,7 @@ class ReversePromise extends Promise {
         // checking if was called before
         if (!this.beenActivated) {
             this.beenActivated = true;
-            this.accumulator();
+            this.accumulate();
         }
         // allowing to call class again
         return this;

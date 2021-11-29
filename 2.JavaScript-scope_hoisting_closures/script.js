@@ -24,12 +24,12 @@ const sum = (...args) => {
     const inputArgs = [...args];
     if (inputArgs.length === 1) {
         let total = inputArgs[0];
-        function accountant(y) {
-            y ? (total += y) : total;
-            return (z) => accountant(z);
+        function accountant() {
+            if (arguments.length === 0) return total;
+            total += arguments[0];
+            return accountant;
         }
-
-        return (x) => (x ? accountant(x) : total);
+        return accountant;
     } else return inputArgs.reduce((acc, el) => acc + el, 0);
 };
 

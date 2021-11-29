@@ -21,15 +21,16 @@ console.log(rAvg(12));
 console.log("-----------Excercise 2-----------");
 
 const sum = (...args) => {
-    if ([...args].length === 1) {
-        let total = [...args][0];
+    const inputArgs = [...args];
+    if (inputArgs.length === 1) {
+        let total = inputArgs[0];
         function accountant(y) {
             y ? (total += y) : console.log(total);
             return (z) => accountant(z);
         }
 
         return (x) => (x ? accountant(x) : console.log(total));
-    } else console.log([...args].reduce((acc, el) => acc + el, 0));
+    } else console.log(inputArgs.reduce((acc, el) => acc + el, 0));
 };
 
 sum(2, 3);

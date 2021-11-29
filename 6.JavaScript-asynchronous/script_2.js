@@ -13,7 +13,7 @@ class ReversePromise extends Promise {
         // setting timer to accumulate all entries
         setTimeout(() => {
             this.callList.reverse().map((el) => el());
-        }, 100);
+        }, 0);
     }
 
     then(input) {

@@ -16,6 +16,7 @@ class Vector {
     }
 
     add(secondArr) {
+        if (!this.equals(secondArr)) throw "Arrays length not equal";
         return (
             !this.equals(secondArr) ||
             new Vector(this.arr.map((el, i) => el + secondArr.arr[i]))
@@ -23,6 +24,7 @@ class Vector {
     }
 
     subtract(secondArr) {
+        if (!this.equals(secondArr)) throw "Arrays length not equal";
         return (
             !this.equals(secondArr) ||
             new Vector(this.arr.map((el, i) => el - secondArr.arr[i]))
@@ -30,6 +32,7 @@ class Vector {
     }
 
     dot(secondArr) {
+        if (!this.equals(secondArr)) throw "Arrays length not equal";
         return (
             !this.equals(secondArr) ||
             this.arr
@@ -53,6 +56,6 @@ const c = new Vector([5, 6, 7, 8]);
 console.log(a.add(b)); // Vector {arr: [4,6,8]}
 console.log(a.subtract(b)); // Vector {arr: [-2,-2,-2]}
 console.log(a.dot(b)); // 26
-console.log(a.norm()); // 14
+console.log(a.norm()); // sqr from 14 = 3.74
 console.log(a.toString() === "(1,2,3)"); // true
 console.log(a.add(c)); // Error

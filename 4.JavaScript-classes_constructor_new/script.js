@@ -15,28 +15,19 @@ class Vector {
 
     add(secondArr) {
         if (!this.equals(secondArr)) throw "Arrays length not equal";
-        return (
-            !this.equals(secondArr) ||
-            new Vector(this.arr.map((el, i) => el + secondArr.arr[i]))
-        );
+        return new Vector(this.arr.map((el, i) => el + secondArr.arr[i]));
     }
 
     subtract(secondArr) {
         if (!this.equals(secondArr)) throw "Arrays length not equal";
-        return (
-            !this.equals(secondArr) ||
-            new Vector(this.arr.map((el, i) => el - secondArr.arr[i]))
-        );
+        return new Vector(this.arr.map((el, i) => el - secondArr.arr[i]));
     }
 
     dot(secondArr) {
         if (!this.equals(secondArr)) throw "Arrays length not equal";
-        return (
-            !this.equals(secondArr) ||
-            this.arr
-                .map((el, i) => el * secondArr.arr[i])
-                .reduce((acc, val) => acc + val, 0)
-        );
+        return this.arr
+            .map((el, i) => el * secondArr.arr[i])
+            .reduce((acc, val) => acc + val, 0);
     }
 
     norm() {

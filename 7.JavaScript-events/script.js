@@ -61,7 +61,9 @@ const listItems = document.querySelectorAll(".container");
 
 listItems.forEach((draggable) => {
     function dragStart() {
-        dragStartIndex = this.closest("div").getAttribute("data-drag-index");
+        dragStartIndex = draggable
+            .closest("div")
+            .getAttribute("data-drag-index");
     }
 
     function dragOver(e) {

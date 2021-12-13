@@ -31,20 +31,15 @@ export abstract class Shape {
     getPerimeter() {
         let perimeter: number = 0;
 
-        for (let i = 0; i < this.points.length; i++) {
-            const currPoint: Point = new Point(
-                this.points[i].x,
-                this.points[i].y
-            );
-
-            // if it's last iteration, take 1st array element
+        this.points.map((point, index) => {
+            const currPoint: Point = new Point(point.x, point.y);
             const nextPoint: Point = new Point(
-                this.points[i + 1 === this.points.length ? 0 : i + 1].x,
-                this.points[i + 1 === this.points.length ? 0 : i + 1].y
+                this.points[index + 1 === this.points.length ? 0 : index + 1].x,
+                this.points[index + 1 === this.points.length ? 0 : index + 1].y
             );
-
             perimeter += currPoint.distance(nextPoint);
-        }
+        });
+
         return perimeter;
     }
 

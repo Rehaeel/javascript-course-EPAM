@@ -20,7 +20,7 @@ export class Triangle extends Shape {
             arguments.length !== 4 &&
             arguments.length !== 3
         )
-            throw console.error("Triangle should have 3 corners");
+            throw new Error("Triangle should have 3 corners");
     }
 
     toString() {

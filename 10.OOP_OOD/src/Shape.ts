@@ -32,10 +32,12 @@ export abstract class Shape {
         let perimeter: number = 0;
 
         this.points.map((point, index) => {
+            const isLastPoint = index + 1 === this.points.length;
+
             const currPoint: Point = new Point(point.x, point.y);
             const nextPoint: Point = new Point(
-                this.points[index + 1 === this.points.length ? 0 : index + 1].x,
-                this.points[index + 1 === this.points.length ? 0 : index + 1].y
+                this.points[isLastPoint ? 0 : index + 1].x,
+                this.points[isLastPoint ? 0 : index + 1].y
             );
             perimeter += currPoint.distance(nextPoint);
         });

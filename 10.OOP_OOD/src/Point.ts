@@ -19,11 +19,41 @@ export class Point implements PointInt {
             new Point(this.x, this.y).y
         })`;
     }
-    distance(point?: PointInt);
-    distance(point: PointInt) {
-        const a: number = arguments.length === 0 ? 0 : point.x ?? arguments[0];
-        const b: number = arguments.length === 0 ? 0 : point.y ?? arguments[1];
 
-        return Math.sqrt(Math.pow(a - this.x, 2) + Math.pow(b - this.y, 2));
+    distance(x: number, y: number): number;
+    distance(point: PointInt): number;
+    distance(): number;
+    distance(arg1?: unknown, arg2?: unknown): number {
+        let coordinate: PointInt = {
+            x: 0,
+            y: 0,
+        };
+
+        // no arguments
+        if (!arg1 && !arg2) {
+            return Math.sqrt(
+                Math.pow(coordinate.x - this.x, 2) +
+                    Math.pow(coordinate.y - this.y, 2)
+            );
+        }
+        if (typeof arg1 === "object") {
+            coordinate = {
+                x: (arg1 as PointInt).x,
+                y: (arg1 as PointInt).y,
+            };
+            return Math.sqrt(
+                Math.pow(coordinate.x - this.x, 2) +
+                    Math.pow(coordinate.y - this.y, 2)
+            );
+        } else {
+            coordinate = {
+                x: arg1 as number,
+                y: arg2 as number,
+            };
+            return Math.sqrt(
+                Math.pow(coordinate.x - this.x, 2) +
+                    Math.pow(coordinate.y - this.y, 2)
+            );
+        }
     }
 }

@@ -22,7 +22,6 @@ class Teacher extends AbstractClass implements TeacherInterface {
 
     constructor(name: string, subject: string) {
         super(name);
-        this.name = name;
         this.subject = subject;
     }
     addStudent<T extends StudentInterface>(student: T): void {

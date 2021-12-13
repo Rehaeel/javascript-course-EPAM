@@ -3,11 +3,11 @@ import { Point, PointInt } from "./Point";
 export abstract class Shape {
     protected color: string;
     protected filled: boolean;
-    points: Array<PointInt>;
+    points: Array<Point>;
 
-    constructor(points: Array<PointInt>, color: string, filled: boolean);
-    constructor(points: Array<PointInt>);
-    constructor(points: Array<PointInt>, color?: string, filled?: boolean) {
+    constructor(points: Array<Point>, color: string, filled: boolean);
+    constructor(points: Array<Point>);
+    constructor(points: Array<Point>, color?: string, filled?: boolean) {
         this.color = color || "green";
         this.filled = filled !== undefined ? filled : true;
 

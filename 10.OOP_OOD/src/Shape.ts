@@ -19,17 +19,13 @@ export abstract class Shape {
     }
 
     toString() {
-        const pointList: string = this.points.reduce(
-            (acc, point, index) =>
-                (acc += `(${point.x}, ${point.y})${
-                    index + 1 === this.points.length ? "." : ", "
-                }`),
-            ""
-        );
+        const pointList = this.points
+            .map((point) => point.toString())
+            .join(", ");
 
         return `A Shape with color of ${this.color} and${
             this.filled ? "" : " not"
-        } filled. Points: ${pointList}`;
+        } filled. Points: ${pointList}.`;
     }
 
     getPerimeter() {

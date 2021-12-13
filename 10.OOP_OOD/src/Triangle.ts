@@ -22,11 +22,7 @@ export class Triangle extends Shape {
         this.filled = filled || true;
 
         /* It might be all args, without 1 arg or only points */
-        if (
-            arguments.length !== 5 &&
-            arguments.length !== 4 &&
-            arguments.length !== 3
-        )
+        if (!point1 && !point2 && !point3)
             throw new Error("Triangle should have 3 corners");
     }
 

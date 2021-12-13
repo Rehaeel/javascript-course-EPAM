@@ -5,6 +5,7 @@ export abstract class Shape {
     protected filled: boolean;
     points: Array<PointInt>;
 
+    constructor(points: Array<PointInt>, color: string, filled: boolean);
     constructor(points: Array<PointInt>);
     constructor(points: Array<PointInt>, color?: string, filled?: boolean) {
         this.color = color || "green";

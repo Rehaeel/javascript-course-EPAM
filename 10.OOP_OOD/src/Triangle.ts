@@ -2,6 +2,13 @@ import { PointInt, Point } from "./Point";
 import { Shape } from "./Shape";
 
 export class Triangle extends Shape {
+    constructor(
+        point1: Point,
+        point2: Point,
+        point3: Point,
+        color: string,
+        filled: boolean
+    );
     constructor(point1: Point, point2: Point, point3: Point);
     constructor(
         point1: Point,

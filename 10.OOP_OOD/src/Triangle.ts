@@ -24,7 +24,7 @@ export class Triangle extends Shape {
     }
 
     toString() {
-        const some: string = `Triangle[${this.points.reduce(
+        return `Triangle[${this.points.reduce(
             (acc: string, point: PointInt, index: number) => {
                 acc += `v${index + 1}=(${point.x}, ${point.y})${
                     index + 1 === this.points.length ? "" : ","
@@ -33,7 +33,6 @@ export class Triangle extends Shape {
             },
             ""
         )}]`;
-        return some;
     }
 
     getType() {

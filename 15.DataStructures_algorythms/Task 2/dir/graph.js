@@ -27,8 +27,7 @@ export class Graph {
     addVertex(vertexName) {
         const isInitState = this.output.innerHTML === "Add new Vertex";
         const isMoreVertexThanTen = this.size >= 10;
-        if (isInitState)
-            this.output.innerHTML = "";
+        if (isInitState) this.output.innerHTML = "";
         if (isMoreVertexThanTen) {
             this.throwError("Limit of Vertex's reached!");
             return;
@@ -49,14 +48,11 @@ export class Graph {
     addEdge(vertex1, vertex2, weight = 1) {
         if (!this.vertexList.includes(vertex1)) {
             this.throwError("No such vertex: Vertex1.");
-        }
-        else if (!this.vertexList.includes(vertex2)) {
+        } else if (!this.vertexList.includes(vertex2)) {
             this.throwError("No such vertex: Vertex2.");
-        }
-        else if (vertex1 === vertex2) {
+        } else if (vertex1 === vertex2) {
             this.throwError("no edge from the same vertex");
-        }
-        else {
+        } else {
             this.matrix[vertex1][vertex2] = weight;
             this.matrix[vertex2][vertex1] = weight;
         }
@@ -67,15 +63,15 @@ export class Graph {
         table.style.gridTemplateRows = `repeat(${this.size + 1}, 1fr)`;
         table.innerHTML = "";
         function changeIfInfinity(number) {
-            if (number === Infinity)
-                return "-";
-            else
-                return number;
+            if (number === Infinity) return "-";
+            else return number;
         }
         for (let i = 0; i < this.size + 1; i++) {
             const currentRow = document.createElement("tr");
             currentRow.classList.add("row");
-            currentRow.style.gridTemplateColumns = `repeat(${this.size + 1}, 1fr)`;
+            currentRow.style.gridTemplateColumns = `repeat(${
+                this.size + 1
+            }, 1fr)`;
             for (let j = 0; j < this.size + 1; j++) {
                 const isFirstColumn = j === 0;
                 const isFirstRow = i === 0;
@@ -83,17 +79,16 @@ export class Graph {
                 currentCell.classList.add("cell");
                 if (isFirstRow && isFirstColumn) {
                     currentCell.classList.add("blank");
-                }
-                else if (isFirstRow) {
+                } else if (isFirstRow) {
                     currentCell.classList.add("header");
                     currentCell.innerHTML = `${this.vertexList[j - 1]}`;
-                }
-                else if (isFirstColumn) {
+                } else if (isFirstColumn) {
                     currentCell.classList.add("header");
                     currentCell.innerHTML = `${this.vertexList[i - 1]}`;
-                }
-                else {
-                    const vertexNumber = changeIfInfinity(this.matrix[i - 1][j - 1]);
+                } else {
+                    const vertexNumber = changeIfInfinity(
+                        this.matrix[i - 1][j - 1]
+                    );
                     currentCell.innerHTML = `${vertexNumber}`;
                 }
                 currentRow.appendChild(currentCell);
@@ -113,10 +108,8 @@ export class Graph {
         return vertex;
     }
     calculatePath(startingVertex) {
-        if (startingVertex === undefined)
-            this.throwError("Enter the Vertex.");
-        if (startingVertex + 1 > this.size)
-            this.throwError("No such Vertex");
+        if (startingVertex === undefined) this.throwError("Enter the Vertex.");
+        if (startingVertex + 1 > this.size) this.throwError("No such Vertex");
         const indexOfVertex = this.vertexList.indexOf(startingVertex);
         let parent = new Array(this.size).fill(-1);
         let value = new Array(this.size).fill(Infinity);
@@ -126,28 +119,35 @@ export class Graph {
             const currentVertex = this.minVertex(value, processed);
             processed[currentVertex] = true;
             for (let j = 0; j < this.size; j++) {
-                const isEdgePresent = this.matrix[currentVertex][j] !== Infinity;
+                const isEdgePresent =
+                    this.matrix[currentVertex][j] !== Infinity;
                 const isNotProcessed = processed[j] === false;
                 const isValueNotInfinite = value[currentVertex] !== Infinity;
-                const isLowerWeight = value[currentVertex] + this.matrix[currentVertex][j] <
+                const isLowerWeight =
+                    value[currentVertex] + this.matrix[currentVertex][j] <
                     value[j];
-                if (!isEdgePresent)
-                    this.throwError(`No such edge in Vertex ${currentVertex} present`);
-                else if (isEdgePresent &&
+                if (
+                    isEdgePresent &&
                     isNotProcessed &&
                     isValueNotInfinite &&
-                    isLowerWeight) {
+                    isLowerWeight
+                ) {
                     value[j] =
                         value[currentVertex] + this.matrix[currentVertex][j];
                     parent[j] = currentVertex;
                 }
             }
         }
-        return `From Vertex: ${startingVertex}\n${value.reduce((acc, weight, index) => {
-            if (index === indexOfVertex)
-                return acc;
-            else
-                return (acc += `Vertex(${this.vertexList[index]}) - weight(${weight})\n`);
-        }, "")}`;
+        return `From Vertex: ${startingVertex}\n${value.reduce(
+            (acc, weight, index) => {
+                if (index === 0 && weight === Infinity)
+                    return "No connection from this Vertex.";
+                if (index === indexOfVertex) return acc;
+                if (weight === Infinity) return acc;
+                else
+                    return (acc += `Vertex(${this.vertexList[index]}) - weight(${weight})\n`);
+            },
+            ""
+        )}`;
     }
 }

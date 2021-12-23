@@ -155,11 +155,7 @@ export class Graph {
                     value[currentVertex] + this.matrix[currentVertex][j] <
                     value[j];
 
-                if (!isEdgePresent)
-                    this.throwError(
-                        `No such edge in Vertex ${currentVertex} present`
-                    );
-                else if (
+                if (
                     isEdgePresent &&
                     isNotProcessed &&
                     isValueNotInfinite &&
@@ -173,7 +169,10 @@ export class Graph {
         }
         return `From Vertex: ${startingVertex}\n${value.reduce(
             (acc, weight, index) => {
+                if (index === 0 && weight === Infinity)
+                    return "No connection from this Vertex.";
                 if (index === indexOfVertex) return acc;
+                if (weight === Infinity) return acc;
                 else
                     return (acc += `Vertex(${this.vertexList[index]}) - weight(${weight})\n`);
             },

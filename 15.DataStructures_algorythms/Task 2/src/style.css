@@ -1,0 +1,138 @@
+:root {
+    --table-size: 400px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: fixed;
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 200px var(--table-size) 200px;
+    gap: 80px;
+    justify-content: center;
+    align-content: center;
+}
+
+#table {
+    height: var(--table-size);
+    width: var(--table-size);
+    background-color: #fff;
+    display: grid;
+}
+
+#table-section {
+    display: flex;
+    flex-direction: column;
+    width: var(--table-size);
+}
+
+.row {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    display: grid;
+}
+
+.cell {
+    position: relative;
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    border: 1px dotted #000;
+}
+
+.blank {
+    background-color: rgba(220, 20, 60, 0.26);
+}
+
+.header {
+    background-color: rgb(122, 122, 122);
+    color: #fff;
+}
+
+#navigation,
+#output-section {
+    width: 100%;
+    height: var(--table-size);
+    background-color: #fff;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#navigation > *:not(:first-child) {
+    border: 1px solid hsla(348, 0%, 47%, 0.26);
+    padding: 10px;
+}
+#navigation > label,
+#output-section > label,
+#table-section > #table-label {
+    text-align: center;
+    font-size: 20px;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+}
+#table-section > #table-label {
+    margin-bottom: 10px;
+}
+
+input {
+    max-width: 100%;
+}
+
+.btn {
+    background-color: rgba(29, 180, 49, 0.9);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    width: 100%;
+}
+
+#add-vertex-form .btn {
+    grid-column: 1/-1;
+}
+
+#add-vertex-form,
+#add-edge-from,
+#calculate-path-form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 5px;
+}
+
+#add-edge-from > label,
+#add-edge-from > input:last-of-type,
+#add-edge-from > button {
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+#add-vertex-form > label,
+#calculate-path-form > label,
+#add-edge-from > label {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#output-section {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+#output {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    padding: 10px;
+}

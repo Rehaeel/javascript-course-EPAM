@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES2017",
+        "outDir": "./dir",
+        "module": "ESNext"
+    },
+    "include": ["**.ts"],
+    "exclude": ["node_modules"]
+}

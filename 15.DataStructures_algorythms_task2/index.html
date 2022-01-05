@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/src/style.css" />
+        <title>Weighted graph</title>
+    </head>
+    <body>
+        <section id="output-section">
+            <label for="output-section">Output</label>
+            <div id="output">Add new Vertex</div>
+        </section>
+
+        <section id="table-section">
+            <label id="table-label" for="table-section">Adjacency matrix</label>
+            <table id="table"></table>
+        </section>
+
+        <section id="navigation">
+            <label for="navigation">Graph manipulation</label>
+
+            <form id="add-vertex-form">
+                <label for="add-vertex-form">Add Vertex</label>
+                <button class="btn" type="submit">add vertex</button>
+            </form>
+
+            <form id="add-edge-from">
+                <label for="add-edge-form">Add Edge</label>
+                <input placeholder="vertex 1" name="vert1" />
+                <input placeholder="vertex 2" name="vert2" />
+                <input placeholder="weight" name="weight" />
+                <button class="btn" type="submit">add edge</button>
+            </form>
+
+            <form id="calculate-path-form">
+                <label for="calculate-path-form">Calculate path</label>
+                <input placeholder="from vertex" name="vertex" />
+                <button class="btn" type="submit">calculate</button>
+            </form>
+        </section>
+
+        <script type="module" src="./dir/app.js"></script>
+    </body>
+</html>

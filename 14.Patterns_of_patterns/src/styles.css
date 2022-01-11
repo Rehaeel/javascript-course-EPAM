@@ -1,0 +1,135 @@
+:root {
+    --background-color: #d5d5d5;
+    --font-color: #304f8c;
+    --root-width: 400px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+p,
+label,
+h1,
+h2,
+h3,
+h4 {
+    color: var(--font-color);
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-columns: var(--root-width);
+    justify-content: center;
+    align-content: center;
+}
+
+#container {
+    width: 100%;
+    height: fit-content;
+    border-radius: 30px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+    background-color: var(--background-color);
+    padding: 10px 20px 20px 20px;
+}
+
+.currency {
+    position: relative;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+}
+
+.currency > h3:first-of-type {
+    position: absolute;
+    top: -12px;
+    background-color: var(--background-color);
+    padding: 0 5px;
+}
+
+.currency-calculations {
+    display: inline-flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/*********************PROMPT******************/
+
+#backdrop,
+#prompt {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+}
+
+#backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#prompt {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    z-index: 999;
+}
+
+#prompt-message {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#prompt-message > h2 {
+    margin-bottom: 15px;
+}
+
+#prompt-message > div {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#prompt-message button {
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+/*********************view******************/
+
+#view {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc((100% - var(--root-width)) / 5);
+    padding: 15px;
+    background-color: var(--font-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+#view > h3 {
+    color: #fff;
+}
+
+#view > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#view > div > button {
+    padding: 10px 20px;
+    background-color: #d5d5d5;
+    color: #000;
+}
+
+.active-layout {
+    background-color: green !important;
+    color: #fff !important;
+}
